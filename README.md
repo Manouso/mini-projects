@@ -20,7 +20,7 @@ A collection of data science and machine learning mini projects built to strengt
 ### 3. Titanic Data Preprocessing & Feature Engineering
 - Cleaned and preprocessed the Titanic dataset for machine learning.
 - Handled missing values, encoded categorical variables, and scaled continuous features.
-- Engineered new features (`FamilySize`, `IsAlone`, `Title`) and analyzed their effect on survival.
+- Engineered new features (`FamilySize`, `IsAlone`) and analyzed their effect on survival.
 - Dataset: Kaggle Titanic dataset.
 
 ---

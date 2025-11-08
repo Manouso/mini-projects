@@ -43,3 +43,9 @@ pip install -r requirements.txt
 ```
 
 ## Insights
+- Missing values handled by median imputation for `Age` and mode for `Embarked`.
+- Created `FamilySize` = `SibSp` + `Parch` + 1 and dropped redundant features.
+- Converted categorical features (`Sex`, `Embarked`) using one-hot encoding.
+- Scaled features to standardize their range and variance for machine learning algorithms.
+- Implemented EDA to see correlation between features and removed high correlation features (`AgeGroup`, `SibSp`, `Parch`).
+- `Fare`, `Age`, `FamilySize` log-transformed to reduce right skew for machine learning algorithms. 
