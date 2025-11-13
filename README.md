@@ -23,6 +23,14 @@ A collection of data science and machine learning mini projects built to strengt
 - Engineered new features (`FamilySize`, `IsAlone`) and analyzed their effect on survival.
 - Dataset: Kaggle Titanic dataset.
 
+### 4. Logistic Regression on Pre-Processed Titanic Data
+- Implemented Logistic Regression on the pre-processed data from the previous project.
+- Used cross-validation to improve model's training.
+- Applied Hyperparameter tuning to find the best hyperparameters to improve model's performance.
+- Visualized the importance of model's features and ordered based on their coefficients.
+
+### 5. Decision Trees on Pre-Processed Titanic Data
+
 ---
 
 ## Tools & Libraries
