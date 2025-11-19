@@ -28,8 +28,32 @@ A collection of data science and machine learning mini projects built to strengt
 - Used cross-validation to improve model's training.
 - Applied Hyperparameter tuning to find the best hyperparameters to improve model's performance.
 - Visualized the importance of model's features and ordered based on their coefficients.
+- Dataset: Kaggle Titanic dataset.
 
 ### 5. Decision Trees on Pre-Processed Titanic Data
+- Built a Decision Tree classifier on the preprocessed Titanic dataset.
+- Explored the effect of `max_depth`, `min_samples_split`, and `min_samples_leaf` on model performance.
+- Visualized decision tree structure and feature importance.
+- Dataset: Kaggle Titanic dataset.
+
+### 6. Pipelines with Logistic Regression on Titanic Data
+- Built a full scikit-learn pipeline including:
+  - Feature engineering
+  - Column dropping
+  - Numeric preprocessing
+  - Categorical preprocessing
+  - Logistic Regression classifier
+- Integrated hyperparameter tuning inside the pipeline to avoid data leakage.
+- Measured model accuracy and training time with cross-validation.
+- Dataset: Kaggle Titanic dataset.
+
+
+### 7. Pipelines with Decision Trees on Housing Data
+- Built a Decision Tree Regression pipeline for the **Ames Housing dataset**.
+- Handled missing values, one-hot encoded categorical variables, and scaled numeric features inside the pipeline.
+- Performed hyperparameter tuning (`max_depth`, `min_samples_split`, `min_samples_leaf`) using cross-validation.
+- Evaluated model performance using RMSE and visualized feature importances.
+- Dataset: [Ames Housing Dataset (CSV)](https://raw.githubusercontent.com/stedy/Machine-Learning-with-R-datasets/master/AmesHousing.csv)
 
 ---
 
