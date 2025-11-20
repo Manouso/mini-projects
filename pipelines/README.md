@@ -85,6 +85,8 @@ The Ames dataset contains **79 features** with many missing values and categoric
 - Generates a high-dimensional sparse matrix → pipelines handle it automatically  
 - Highlights the power of **ColumnTransformer**
 
+## EDA
+
 ## Pipeline Components
 
 
