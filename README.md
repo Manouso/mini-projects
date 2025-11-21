@@ -53,8 +53,14 @@ A collection of data science and machine learning mini projects built to strengt
 - Handled missing values, one-hot encoded categorical variables, and scaled numeric features inside the pipeline.
 - Performed hyperparameter tuning (`max_depth`, `min_samples_split`, `min_samples_leaf`) using cross-validation.
 - Evaluated model performance using RMSE and visualized feature importances.
-- Dataset: [Ames Housing Dataset (CSV)](https://raw.githubusercontent.com/stedy/Machine-Learning-with-R-datasets/master/AmesHousing.csv)
+- Dataset: [Ames Housing Dataset (CSV)](https://www.kaggle.com/datasets/shashanknecrothapa/ames-housing-dataset)
 
+### 8. Random Forest Tree Classifier with Pipelines on Heart Disease Data
+- Built a Random Forest Tree Classifier pipeline for the **Heart Failure Prediction Dataset**. 
+- One-hot encoded categorical variables and scaled numeric features using StandardScaler.
+- Performed hyperparameter tuning and used Stratified Cross Validation.
+- Performed Feature Engineering by dropping non-important features of the dataset.
+- Dataset: [Heart Failure Prediction Dataset](https://www.kaggle.com/datasets/fedesoriano/heart-failure-prediction)
 ---
 
 ## Tools & Libraries
