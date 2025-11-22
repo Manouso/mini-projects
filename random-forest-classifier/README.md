@@ -17,7 +17,7 @@ This project demonstrates how to train and evaluate a **RandomForestClassifier**
 
 - **random-forest-classifier/**
   - `random_forest.ipynb` - Notebook
-  - `Housing-Dataset.csv` - Dataset
+  - `heart.csv` - Dataset
   - `requirements.txt` — Requirements  
   - `README.md` — Project overview
 
