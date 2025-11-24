@@ -1,4 +1,4 @@
-# Extreme Gradient Boosting
+# Extreme Gradient Boosting Heart Disease
 
 This project demonstrates how to train and evaluate a **ExtremeGradientBoostingClassifier** using scikit-learn.
 
@@ -18,7 +18,6 @@ This project demonstrates how to train and evaluate a **ExtremeGradientBoostingC
 
 - **extreme-gradient-boosting/**
   - `xgradient_boosting.ipynb` - Notebook
-  - `heart.csv` - Dataset
   - `requirements.txt` — Requirements  
   - `README.md` — Project overview
 

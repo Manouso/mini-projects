@@ -1,4 +1,4 @@
-# Random Forest Classifier
+# Random Forest Classifier Heart Disease Prediction
 
 This project demonstrates how to train and evaluate a **RandomForestClassifier** using scikit-learn.
 

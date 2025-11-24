@@ -1,4 +1,4 @@
-# Gradient Boosting
+# Gradient Boosting Heart Disease Prediction Project
 
 This project demonstrates how to train and evaluate a **GradientBoostingClassifier** using scikit-learn.
 
@@ -18,7 +18,6 @@ This project demonstrates how to train and evaluate a **GradientBoostingClassifi
 
 - **gradient-boosting/**
   - `gradient_boosting.ipynb` - Notebook
-  - `heart.csv` - Dataset
   - `requirements.txt` — Requirements  
   - `README.md` — Project overview
 
