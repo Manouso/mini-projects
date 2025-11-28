@@ -4,11 +4,10 @@ Ensemble stacking pipeline combining XGBoost, Random Forest, and Logistic Regres
 
 ## Objectives
 
-- **End-to-end ML workflow** with feature engineering and rigorous overfitting prevention
-- **Advanced hyperparameter tuning** using RandomizedSearchCV (30 iterations, 10-fold CV)
-- **Comprehensive evaluation** with 6 metrics and feature importance analysis
-- **Model interpretability** through feature selection and importance analysis
-- **Best practices** in stratified sampling, regularization, and feature selection
+- **End-to-end ML workflow** with simplified feature engineering and rigorous overfitting elimination
+- **Multiple approaches tested** with comprehensive comparison (Baseline, Simplified, Diverse+Bagging)
+- **Comprehensive evaluation** with 9 metrics and detailed error analysis
+- **Best practices** in ensemble diversity, regularization, and data leakage prevention
 
 ## Dataset
 
@@ -42,61 +41,58 @@ jupyter notebook model_stacking.ipynb
 **Stacking Architecture:**
 - **Base Learners:** XGBoost, Random Forest, Logistic Regression
 - **Meta-Learner:** Logistic Regression (combines base predictions)
-- **Feature Engineering:** 20 cardiovascular-specific features
-- **Feature Selection:** Automatic selection of top 18 features (from 35 total)
-- **Validation:** 10-fold Stratified Cross-Validation
+- **Feature Engineering:** 3 cardiovascular-specific features
+- **Feature Selection:** Automatic selection of top 18 features
+- **Validation:** 5-fold Stratified Cross-Validation
 
 ---
 
 ## Performance Results
 
-    Metric  Baseline  Optimized  Improvement  Improvement %
- Accuracy  0.885870   0.891304     0.005435           0.61
-Precision  0.893204   0.901961     0.008757           0.98
-   Recall  0.901961   0.901961     0.000000           0.00
- F1-Score  0.897561   0.901961     0.004400           0.49
-  ROC-AUC  0.931978   0.936902     0.004924           0.53
-      MCC  0.768807   0.780010     0.011203           1.46
+    Metric  Baseline  Simplified  Improvement  Improvement %
+ Accuracy  0.902174   0.902174     0.000000           0.00
+Precision  0.909091   0.898734     -0.010357         -1.14
+   Recall  0.915033   0.928105     0.013072           1.43
+ F1-Score  0.912051   0.913158     0.001107           0.12
+  ROC-AUC  0.945885   0.945797     -0.000088         -0.01
+      MCC  0.801913   0.801805     -0.000108         -0.01
 
-**Top Predictive Features (from 18 selected):**
-1. ST_Slope_Up (21.5% importance)
-2. ExerciseAngina (8.4%)
-3. ST_Slope_Flat (8.0%)
-4. Oldpeak_Squared (3.6%) - Engineered
-5. Chol_Risk_Score (3.2%) - Engineered
+**Top Predictive Features (Simplified - 3 engineered):**
+1. Heart_Rate_Reserve - Cardiac capacity indicator
+2. Age_Chol_Product - Combined age-cholesterol risk
+3. BP_Risk_Score - Normalized blood pressure risk
 
 **Feature Engineering Impact:**  
-11 out of 20 top features are engineered (55%), demonstrating the value of domain-specific features.
+Simplified approach (3 features) matched baseline performance while maintaining interpretability.
 
 ---
 
 ## Technical Challenges & Solutions
 
-### Challenge 1: Overfitting (Train-Test Gap)
-**Problem:** Initial models showed train scores significantly higher than test scores (gap > 5%), indicating memorization rather than generalization.
+### Challenge 1: Overfitting (Train-CV Gap > 5%)
+**Problem:** Initial models with 20 engineered features showed +5.8% overfitting gap (Train=98.01%, CV=92.19%), indicating memorization rather than generalization.
 
-### Challenge 2: Feature Engineering Complexity
-**Problem:** Creating meaningful cardiovascular features required domain knowledge while avoiding redundant/correlated features that could increase overfitting.
+### Challenge 2: Simplicity vs Complexity Trade-off
+**Problem:** Determining optimal feature count - testing 6, 9, and 26 features revealed that simplicity wins on small datasets (918 samples).
 
 ---
 
-## Model Comparison: Stacking vs LightGBM
+## Model Comparison: Three Approaches
 
-| Metric     | **Model Stacking** | **LightGBM** | **Winner** |
-|------------|-------------------:|-------------:|------------|
-| Accuracy   | **89.13%**        | **89.13%**   | **Tie** ⚖️  |
-| Precision  | **90.20%**        | **90.20%**   | **Tie** ⚖️  |
-| Recall     | **90.20%**        | **90.20%**   | **Tie** ⚖️  |
-| F1-Score   | **90.20%**        | **90.20%**   | **Tie** ⚖️  |
-| ROC-AUC    | **93.69%**        | 92.96%       | Stacking 🏆 |
-| MCC        | **78.00%**        | **78.00%**   | **Tie** ⚖️  |
+| Metric     | **Baseline (6 feat)**| **Simplified (9 feat)** |
+|------------|----------------------|------------------------ |
+| Accuracy   | **90.22%**           | **90.22%**              |
+| Precision  | **90.91%**           | 89.87%                  | 
+| Recall     | 91.50%               | **92.81%**              | 
+| F1-Score   | 91.21%               | **91.32%**              |
+| ROC-AUC    | **94.59%**           | **94.58%**              | 
+| MCC        | **0.8019**           | **0.8018**              |
 
 ### Analysis:
 
-**Performance Parity:**
-- 🎯 **Identical classification metrics** - Both models achieve exactly 89.13% accuracy and 90.20% precision/recall/F1
-- 📊 **Stacking has slightly better ROC-AUC** (+0.73%) - better probability calibration
-- ⚖️ **Equal MCC scores** - Both models have identical balance between precision and recall
+**Key Findings:**
+- **Baseline wins** - 6 original features achieved best overall performance (0.9459 ROC-AUC)
+- **Simplified matches baseline** - 3 engineered features nearly identical performance (0.9458 ROC-AUC)
 
 ---
 
@@ -104,25 +100,25 @@ Precision  0.893204   0.901961     0.008757           0.98
 
 **Model:** Stacking Classifier
 - Base: XGBoost + Random Forest + Logistic Regression
-- Meta: Logistic Regression with strong regularization
-- Feature Selection: SelectKBest (f_classif scoring)
+- Meta: Logistic Regression with moderate regularization
+- Validation: 5-fold Stratified CV with out-of-fold predictions
 
 **Anti-Overfitting Measures:**
 - K-fold stratified cross-validation
-- Feature selection
+- Out-of-fold predictions (OOF)
 - L1/L2 regularization
-- Data/Feature sampling
+- Sample/Feature subsampling
 - Limited tree depth 
-- Increased minimum leaf samples
+- Minimum leaf samples
+- passthrough=False to prevent leakage
 
 ---
 
 ## Key Highlights
 
-✅ **Excellent Performance** - 89.13% accuracy, 93.69% ROC-AUC  
-✅ **Rigorous Overfitting Control** - Gap reduced to 4.02%  
-✅ **Feature Selection** - 18 most predictive features identified  
-✅ **Performance Parity with LightGBM** - Identical classification metrics
+ **Excellent Performance** - 90.22% accuracy, 94.59% ROC-AUC   
+ **Simplicity Wins** - 6 features outperformed 9 and 26 features  
+ **Data Leakage Prevention** - Proper pipelines and OOF predictions
 
 ## References
 
