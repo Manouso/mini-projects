@@ -81,12 +81,20 @@ A collection of data science and machine learning mini projects built to strengt
 - Dataset: [Heart Failure Prediction Dataset](https://www.kaggle.com/datasets/fedesoriano/heart-failure-prediction)
 
 
-## 11. Light Gradient Boosting Classifier with Pipelines on Heart Disease Dats (with new advanced practices)
+## 11. Light Gradient Boosting Classifier with Pipelines on Heart Disease Data (with new advanced practices)
 - Built a Light Gradient Boosting Classifier pipeline for the **Heart Failure Prediction Dataset**. 
 - Built a new more complete and advanced EDA for the **Heart Failure Prediction Dataset**.
 - Performed Hyperparameter Tuning and used Stratified Cross Validation.
 - Evaluate feature importance prior to feature engineering to receive necessary insight.
-- Performed Feature Engineering by dropping non-important features and engineering new features with knowledge from the healthcare domain.
+- Performed Feature Engineering by engineering new features with knowledge from the healthcare domain.
+- Dataset: [Heart Failure Prediction Dataset](https://www.kaggle.com/datasets/fedesoriano/heart-failure-prediction)
+
+## 12. Model Stacking with Pipelines on Heart Disease Data
+- Built a Model Stacking pipeline for basic and meta models **Heart Failure Prediction Dataset**.
+- Built advanced EDA to capture the characteristics of  **Heart Failure Prediction Dataset**.
+- Performed Hyperparameter Tuning and used Stratified Cross Validation.
+- Evaluate feature importance prior to feature engineering to receive necessary insight.
+- Performed Feature Engineering by engineering new features in limited number however due to overfitting issues.
 - Dataset: [Heart Failure Prediction Dataset](https://www.kaggle.com/datasets/fedesoriano/heart-failure-prediction)
 
 ---
