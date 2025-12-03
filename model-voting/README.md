@@ -56,6 +56,27 @@ jupyter notebook model_voting.ipynb
 | **F1-Score**| 82.14%      | 84.75%   | **+2.60%**  |
 | Precision  | 88.46%       | 86.21%   | -2.25%      |
 
+### Updated Performance Results (with Feature Engineering)
+
+| Metric       | RandomSearch (FE) | Bayesian (FE) | Improvement |
+|--------------|-------------------|---------------|-------------|
+| Recall       | 87.76%            | 88.78%        | +1.02%      |
+| F1-Score     | 77.48%            | 69.60%        | -7.88%      |
+| Precision    | 69.35%            | 57.24%        | -12.12%     |
+
+Notes:
+- FE: includes engineered features (Amount_Log, Time_Log, selected V interactions and squares).
+- Trade-off observed: recall improved slightly, precision and F1 declined due to more positive predictions.
+
+---
+
+## Why We Prioritize Recall
+
+- False negatives are costly: missing fraud directly translates to financial loss and trust erosion.
+- Extreme imbalance (~0.17% fraud): accuracy/ROC can be misleading; recall measures how many frauds are caught.
+- Policy and customer protection: higher recall reduces undetected fraud exposure.
+- Tuning strategy: optimize recall first (RandomizedSearch), then balance with F1 in fine-tuning to maintain acceptable precision.
+
 ---
 
 ## Technical Approach
@@ -108,11 +129,21 @@ jupyter notebook model_voting.ipynb
 - **F1:** 84.75%
 - **Winner:** Best overall performance
 
+### Feature-Engineered RandomizedSearch
+- **Recall**: 87.76%
+- **F1-Score**: 77.48%
+- **Summary**: Improved recall with moderate F1; suitable when minimizing missed frauds is primary.
+
+### Feature-Engineered Bayesian Optimization
+- **Recall**: 88.78%
+- **F1-Score**: 69.60%
+- **Summary**: Highest recall among variants; use because the cost of FN >> FP when we detect frauds.
+
 ---
 
 ## Key Highlights
 
- **High Recall** - 83.33% fraud detection rate  
+ **High Recall** - 83.33% and 88.78% fraud detection rate  
  **Two-Stage Optimization** - RandomizedSearch → Bayesian  
  **Extreme Imbalance Handled** - 0.17% fraud successfully detected  
  **Business-Focused** - Heavy penalty for missed frauds
@@ -121,6 +152,7 @@ jupyter notebook model_voting.ipynb
 **Challenge : Extreme Class Imbalance (577:1 ratio)**
 - Solution: Aggressive class weights and scale_pos_weight parameters
 - Result: 83.33% recall despite only 0.17% fraud prevalence
+- Result(after fe): 88.78% recall despite only 0.17% fraud prevalence
 
 ---
 
