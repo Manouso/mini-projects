@@ -1,17 +1,12 @@
+
 import pandas as pd
-from preprocessing import get_preprocessor, FeatureEngineer
-from pipeline import build_pipelines
 from train import train_voting_classifier
 from evaluate import evaluate_model
-from sklearn.ensemble import VotingClassifier
-from sklearn.linear_model import LogisticRegression
-from sklearn.ensemble import RandomForestClassifier
-import xgboost as xgb
 
 # main entry point for ML workflow
 def main():
     # Load data
-    data = pd.read_csv('../../datasets/creditcard.csv')
+    data = pd.read_csv('../datasets/creditcard.csv')
     X = data.drop('Class', axis=1)
     y = data['Class']
     numeric_features = X.select_dtypes(include=['int64', 'float64']).columns.tolist()

@@ -1,3 +1,4 @@
+
 import pandas as pd
 from sklearn.model_selection import train_test_split, RandomizedSearchCV, StratifiedKFold
 from pipeline import build_pipelines
@@ -40,5 +41,4 @@ def train_voting_classifier(X, y, numeric_features):
 	random_search.fit(X_train, y_train)
 	best_model = random_search.best_estimator_
 	best_params = random_search.best_params_
-	
 	return best_model, X_test, y_test, best_params
