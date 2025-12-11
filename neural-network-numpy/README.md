@@ -75,10 +75,6 @@ jupyter notebook neural_network_numpy.ipynb
 
 The model achieves high accuracy on the make_circles dataset, demonstrating the effectiveness of the implementation. The decision boundary visualization shows how the neural network learns to separate the concentric circles.
 
-## Model Evaluation and Limitations
-
-**Note on Overfitting**: While the model achieves high training accuracy (typically 98%+), it may be overfitting to the training data. This is common in small neural networks trained on synthetic datasets without proper validation splits or regularization. The model memorizes the training patterns rather than learning generalizable features.
-
 ### Suggestions for Improved Generalization
 
 To minimize loss while maintaining accuracy in future projects:
