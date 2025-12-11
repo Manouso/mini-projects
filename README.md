@@ -115,6 +115,11 @@ A collection of data science and machine learning mini projects built to strengt
 - Implemented response formatting with both binary predictions and probability scores for fraud detection confidence.
 - Dataset: [Credit Card Fraud Detection Dataset](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud)
 
+### 15. Neural Network from Scratch with NumPy
+- Implemented a complete 2-layer neural network from scratch using NumPy for binary classification on the `make_circles` dataset.
+- Included forward propagation, backpropagation, and gradient descent optimization with ReLU and Sigmoid activations.
+- Demonstrated proper weight initialization (He), loss tracking, and evaluation metrics (accuracy, confidence).
+- Dataset: Scikit-learn `make_circles` (synthetic 2D dataset with 100 samples).
 ---
 
 ## Tools & Libraries
