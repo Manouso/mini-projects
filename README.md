@@ -120,12 +120,21 @@ A collection of data science and machine learning mini projects built to strengt
 - Included forward propagation, backpropagation, and gradient descent optimization with ReLU and Sigmoid activations.
 - Demonstrated proper weight initialization (He), loss tracking, and evaluation metrics (accuracy, confidence).
 - Dataset: Scikit-learn `make_circles` (synthetic 2D dataset with 100 samples).
+
+### 16. Neural Network with PyTorch on Titanic Dataset
+- Built a 2-layer neural network using PyTorch `nn.Module` for binary classification on the Titanic survival dataset.
+- Integrated advanced sklearn pipelines with `FunctionTransformer` for missing values handling and feature engineering.
+- Implemented reproducible training with standardized random states across NumPy, PyTorch, and sklearn.
+- Used mini-batch training with PyTorch DataLoader and evaluated with accuracy/classification metrics.
+- Dataset: Kaggle Titanic dataset with engineered features (FamilySize, Title, AgeBin, FareBin).
+
 ---
 
 ## Tools & Libraries
 - Python
 - NumPy, Pandas, Matplotlib, Seaborn
 - scikit-learn
+- PyTorch
 - KaggleHub
 - XGBoost
 - LightGBM
