@@ -53,6 +53,7 @@ In my opinion, with this basic architecture, normalization, data augmentation, a
 
 ## Notes
 
-- The model runs on CPU using NumPy.
+- The model runs on CPU using NumPy and on GPU using CuPy.
 - Training may take time due to the manual loops in the layers.
+- The above reason is why i estimated time since it would take many hours till the training and testing of the model.
 - For better performance we could use PyTorch or TensorFlow (but that wasnt my concern here).
