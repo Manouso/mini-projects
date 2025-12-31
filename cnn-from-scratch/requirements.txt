@@ -1,4 +1,4 @@
-cupy
+torch
 matplotlib
 scikit-learn
 seaborn

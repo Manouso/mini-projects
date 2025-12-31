@@ -1,14 +1,15 @@
-# CNN from Scratch
+# CNN from Scratch with PyTorch
 
-This project implements a Convolutional Neural Network (CNN) from scratch using NumPy for classifying the CIFAR-10 dataset. The CNN includes convolutional layers, ReLU activation, max pooling, fully connected layers, and dropout.
+This project implements a Convolutional Neural Network (CNN) using PyTorch for classifying the CIFAR-10 dataset. The CNN uses PyTorch's nn.Module for layers, with data augmentation and hyperparameter tuning.
 
 ## Features
 
-- Custom implementation of CNN layers (Conv2D, ReLU, MaxPool2D, FC, Dropout)
-- Manual forward and backward propagation
-- Training with gradient descent and weight decay
-- Data preprocessing: normalization (mean/std) and data augmentation (random crop, horizontal flip, random erasing, Gaussian noise)
+- CNN model using PyTorch nn.Conv2d, nn.BatchNorm2d, nn.MaxPool2d, nn.Linear, nn.Dropout
+- Data preprocessing: normalization and data augmentation (random crop, horizontal flip, random erasing, Gaussian noise)
+- Hyperparameter search over learning rate, batch size, dropout rate, weight decay
+- Training with Adam optimizer
 - Evaluation on test set with confusion matrix and classification report
+- GPU support if available
 
 ## Requirements
 
@@ -20,40 +21,51 @@ pip install -r requirements.txt
 
 ## Usage
 
-1. Ensure you have the CIFAR-10 dataset downloaded (the code handles automatic download).
-2. Run the Jupyter notebook `cnn_from_scratch.ipynb` to train and evaluate the model.
+1. Run the Jupyter notebook `cnn_from_scratch.ipynb`.
+2. The notebook will download CIFAR-10 automatically if not present.
+3. It performs hyperparameter search on a subset of epochs to find the best combo.
+4. Then trains the model with the best hyperparameters for 10 epochs.
+5. Evaluates on the test set and plots results.
 
 ## Data Preprocessing
 
-- **Normalization**: Images are normalized using CIFAR-10 mean and std per channel.
-- **Data Augmentation** (training only): Random crop (with padding), random horizontal flip, random erasing (occlusion simulation), and Gaussian noise to increase dataset diversity and reduce overfitting.
+- **Normalization**: Images normalized using CIFAR-10 mean and std per channel.
+- **Data Augmentation** (training only): Random crop (with padding), random horizontal flip, random erasing, Gaussian noise.
 
 ## Model Architecture
 
-- Conv2D (3->32 filters, 3x3, padding=1)
+- Conv2D (3 -> filters1, 3x3, padding=1)
+- BatchNorm2D
 - ReLU
 - MaxPool2D (2x2)
-- Conv2D (32->64 filters, 3x3, padding=1)
+- Conv2D (filters1 -> filters2, 3x3, padding=1)
+- BatchNorm2D
 - ReLU
 - MaxPool2D (2x2)
-- FC (64*8*8 -> 10)
-- Dropout (0.5)
+- Flatten
+- Linear (filters2*8*8 -> 10)
+- Dropout
+
+Where filters1 and filters2 are configurable (default 32, 64).
 
 ## Hyperparameters
 
-- Learning rate: 0.01
-- Batch size: 128
-- Dropout rate: 0.5
-- Weight decay: 1e-4
-- Epochs: 5
+Tuned via 5-fold cross-validation grid search:
+
+- Learning rate: [0.0001, 0.001, 0.01]
+- Batch size: [64, 128, 256]
+- Dropout rate: [0.3, 0.4, 0.5]
+- Weight decay: [0, 1e-4, 1e-3]
+- Optimizer: Adam
+
+Training uses LR scheduler (StepLR), early stopping, mixed precision for GPU optimization, and label smoothing.
 
 ## Estimated Performance
 
-In my opinion, with this basic architecture, normalization, data augmentation, and limited epochs, the model is expected to achieve a test accuracy of around 60-70% on CIFAR-10. Data augmentation helps reduce overfitting and improve generalization, potentially boosting performance compared to no augmentation.
+With cross-validation tuning, LR scheduling, and optimizations, expect 75-85% test accuracy after 20-30 epochs.
 
 ## Notes
 
-- The model runs on CPU using NumPy and on GPU using CuPy.
-- Training may take time due to the manual loops in the layers.
-- The above reason is why i estimated time since it would take many hours till the training and testing of the model.
-- For better performance we could use PyTorch or TensorFlow (but that wasnt my concern here).
+- Uses PyTorch for efficient computation and autograd.
+- Supports GPU if available.
+- Hyperparameter search trains each combo for 2 epochs to save time.
