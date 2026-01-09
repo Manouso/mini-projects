@@ -227,3 +227,6 @@ datasets/
 *.sqlite
 *.xlsx
 *.xls
+
+# PyTorch models
+*.pth
