@@ -3,3 +3,4 @@ torchvision
 matplotlib
 numpy
 scikit-learn
+opencv-python

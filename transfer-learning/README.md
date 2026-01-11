@@ -47,4 +47,13 @@ After hyperparameter optimization, the model achieves a best validation accuracy
 2. **Phase 2**: Unfreeze and fine-tune the last few ResNet layers
 3. **Phase 3**: Hyperparameter optimization with random search
 
+## Visualizations
+
+The notebook includes advanced visualizations to understand model behavior:
+
+- **Gradient Flow**: Plots gradient magnitudes through network layers to detect vanishing/exploding gradients
+- **Grad-CAM**: Shows which image regions contribute most to predictions using Gradient-weighted Class Activation Mapping
+
+## Model Saving
+
 The saved model weights are available in `resnet18_cifar10_transfer_learning.pth`.
