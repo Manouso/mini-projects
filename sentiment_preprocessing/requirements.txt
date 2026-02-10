@@ -3,4 +3,3 @@ pandas
 numpy
 spacy
 nltk
-scikit-learn
